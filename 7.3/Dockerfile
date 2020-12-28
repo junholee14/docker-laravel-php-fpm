@@ -1,11 +1,6 @@
 # PHP Version alpine image to install based on the PHP_VERSION environment variable
 FROM php:7.3-fpm-alpine
 
-# Remote working directory environment variable
-ARG REMOTE_WORKING_DIR
-# UID
-ARG UID
-
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
     $PHPIZE_DEPS \
@@ -81,10 +76,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN rm -rf /var/cache/apk/*
 
 # Add UID '1000' to www-data
-RUN apk add shadow && usermod -u $UID www-data && groupmod -g $UID www-data
+RUN apk add shadow && usermod -u 1001 www-data && groupmod -g 1001 www-data
 
 # Copy existing application directory permissions
-COPY --chown=www-data:www-data . $REMOTE_WORKING_DIR
+COPY --chown=www-data:www-data . /var/www/html
 
 # Change current user to www
 USER www-data
