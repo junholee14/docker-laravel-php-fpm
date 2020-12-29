@@ -33,4 +33,4 @@ jobs:
         run: |
           docker buildx build \
           --tag dkrdj8989/laravel-php-fpm:7.3 \
-          --platform linux/amd64,linux/arm/v7,linux/arm64 . 
+          --platform linux/amd64,linux/arm/v7,linux/arm64 ./7.3/Dockerfile
