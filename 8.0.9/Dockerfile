@@ -1,5 +1,5 @@
 # PHP Version alpine image to install based on the PHP_VERSION environment variable
-FROM php:8.0-alpine
+FROM php:8.0.9-alpine
 
 # Install dev dependencies
 RUN apk add --no-cache --virtual .build-deps \
