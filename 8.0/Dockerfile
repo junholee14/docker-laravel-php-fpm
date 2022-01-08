@@ -46,10 +46,6 @@ RUN docker-php-ext-enable \
     redis \
     imagick
 
-# Configure php extensions
-RUN docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-configure zip --with-libzip
-
 # Install php extensions
 RUN docker-php-ext-install \
     bcmath \
